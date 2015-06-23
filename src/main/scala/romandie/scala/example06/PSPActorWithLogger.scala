@@ -11,6 +11,7 @@ import romandie.scala.psp.PrimeSumPrime
  */
 class PSPActorLogger extends Actor with ActorLogging {
   val writer = new FileWriter("/tmp/psp.log")
+
   override def receive: Receive = {
     case PSPSingle(i) =>
       writer.write(s"$i\n")
@@ -19,6 +20,7 @@ class PSPActorLogger extends Actor with ActorLogging {
 
 class PSPActorWithLogger extends Actor with ActorLogging {
   var actorLogger = context.actorSelection("/user/psp-logger")
+
   override def receive: Receive = {
     case FindListPSP(start, end) =>
       log.info(s"haha FindListPSP($start, $end)")
@@ -26,6 +28,4 @@ class PSPActorWithLogger extends Actor with ActorLogging {
       l.foreach(x => actorLogger ! PSPSingle(x))
       sender ! PSPList(l)
   }
-
-
 }

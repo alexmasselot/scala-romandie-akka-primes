@@ -14,9 +14,7 @@ class PSPActor extends Actor with ActorLogging {
     case FindStreamPSP(start, end) =>
       log.info(s"FindStreamPSP($start, $end)")
       PrimeSumPrime.streamPSP(start, end).foreach({
-        x =>
-          log.info(s"sending back from stream $x")
-          sender ! PSPSingle(x)
+        x => sender ! PSPSingle(x)
       })
     case FindListPSP(start, end) =>
       log.info(s"FindListPSP($start, $end)")

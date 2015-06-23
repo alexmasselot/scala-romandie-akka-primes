@@ -9,13 +9,14 @@ package romandie.scala.example05
  */
 
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
+import akka.routing.RoundRobinPool
 import romandie.scala.psp.PSPActor
 import romandie.scala.psp.PSPActor._
 
 class MasterActor extends Actor with ActorLogging {
 
-  //val pspActor = context.actorOf(RoundRobinPool(5).props(Props[PSPActor]), "pspactor-router")
-  val pspActor = context.actorOf(Props[PSPActor], "pspActor")
+  val pspActor = context.actorOf(RoundRobinPool(5).props(Props[PSPActor]), "pspactor-router")
+  //val pspActor = context.actorOf(Props[PSPActor], "pspActor")
 
   pspActor ! FindListPSP(2000000000, 2000100000)
   pspActor ! FindListPSP(2000100000, 2000200000)
@@ -23,7 +24,6 @@ class MasterActor extends Actor with ActorLogging {
   pspActor ! FindListPSP(2000300000, 2000400000)
 
   override def receive: Receive = {
-
     case al: PSPList =>
       log.info(s"received PSP $al")
   }

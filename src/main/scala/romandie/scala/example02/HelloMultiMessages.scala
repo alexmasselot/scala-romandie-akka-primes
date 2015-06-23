@@ -4,7 +4,7 @@ import akka.actor.Actor.Receive
 import akka.actor.{Props, ActorSystem, ActorLogging, Actor}
 
 case class Name(value:String) extends AnyVal
-object tcho
+object Tcho
 
 class PingActor extends Actor with ActorLogging {
   def receive = {
@@ -23,7 +23,7 @@ object HelloMultiMessagesApp extends App{
   pingActor ! Name("Bond")
   pingActor ! Name("Paf")
   pingActor ! Name("Pif")
-  pingActor ! tcho
+  pingActor ! Tcho
 
   system.awaitTermination()
 }

@@ -18,7 +18,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._
 
 
-
 object PSPSimpleApp extends App {
   val system = ActorSystem("MyActorSystem")
 

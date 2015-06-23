@@ -8,11 +8,12 @@ import akka.actor.{Props, ActorSystem, ActorLogging, Actor}
 
 class PingActor extends Actor with ActorLogging {
   def receive = {
-    case name =>
+    case name:String =>
       log.info(s"hello, my name is $name")
       context.system.shutdown()
   }
 }
+
 object HelloApp extends App{
   val system = ActorSystem("MyActorSystem")
   val pingActor = system.actorOf(Props[PingActor], "pingActor")

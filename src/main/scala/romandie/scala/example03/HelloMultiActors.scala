@@ -21,24 +21,16 @@ class PingActor extends Actor with ActorLogging {
     case Name(name) =>
       log.info(s"received [$name]")
       sender ! Greetings(s"hello, my name is $name")
-    case tcho => sender ! tcho
+    case Tcho => sender ! Tcho
   }
 }
 
 class MasterActor extends Actor with ActorLogging {
   val pingActor = context.actorOf(Props[PingActor], "pingActor")
 
-  def sendToPing(names: List[Name]): Unit = {
-    names.foreach({ n =>
-      Thread.sleep(20)
-      log.info(s"sending $n")
-      pingActor ! n
-    })
-  }
-
   override def receive: Receive = {
     case GoForIt =>
-      sendToPing(List(Name("Bond"),Name("Paf"), Name("Pif")))
+      List(Name("Bond"),Name("Paf"), Name("Pif")).foreach(pingActor !)
       pingActor ! Tcho
     case Greetings(message) =>
       log.info(s"received greeting [$message]")
