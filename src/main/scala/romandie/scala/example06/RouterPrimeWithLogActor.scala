@@ -1,4 +1,4 @@
-package romandie.scala.example04
+package romandie.scala.example06
 
 /**
  * The same as PSPRouterApp, but a logger actor is created with the 'psp-logger' name, that will simply write every number found in a file
@@ -8,12 +8,7 @@ package romandie.scala.example04
 
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
 import akka.routing.RoundRobinPool
-import akka.util.Timeout
-import romandie.scala.example04.PSPActor._
-import akka.pattern.{ask, pipe}
-
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration._
+import romandie.scala.psp.PSPActor._
 
 class MasterActorWithLogger extends Actor with ActorLogging {
 

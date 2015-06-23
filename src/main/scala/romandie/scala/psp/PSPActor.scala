@@ -1,8 +1,7 @@
-package romandie.scala.example04
+package romandie.scala.psp
 
-import akka.actor.Actor.Receive
 import akka.actor.{Actor, ActorLogging, Props}
-import romandie.scala.example04.PSPActor._
+import romandie.scala.psp.PSPActor._
 
 /**
  * Created by amasselo on 6/22/15.

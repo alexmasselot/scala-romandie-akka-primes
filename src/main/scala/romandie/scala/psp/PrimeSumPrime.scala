@@ -1,4 +1,4 @@
-package romandie.scala.example04
+package romandie.scala.psp
 
 import scala.annotation.tailrec
 

@@ -9,9 +9,10 @@ package romandie.scala.example04
  */
 
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
+import akka.pattern.ask
 import akka.util.Timeout
-import romandie.scala.example04.PSPActor._
-import akka.pattern.{ask, pipe}
+import romandie.scala.psp.PSPActor
+import romandie.scala.psp.PSPActor._
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration._

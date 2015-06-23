@@ -1,4 +1,4 @@
-package romandie.scala.example04
+package romandie.scala.example05
 
 /**
  * create a MasterActor, that will
@@ -9,13 +9,8 @@ package romandie.scala.example04
  */
 
 import akka.actor.{Actor, ActorLogging, ActorSystem, Props}
-import akka.routing.RoundRobinPool
-import akka.util.Timeout
-import romandie.scala.example04.PSPActor._
-import akka.pattern.{ask, pipe}
-
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration._
+import romandie.scala.psp.PSPActor
+import romandie.scala.psp.PSPActor._
 
 class MasterActor extends Actor with ActorLogging {
 
