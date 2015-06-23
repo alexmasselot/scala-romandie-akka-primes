@@ -19,6 +19,8 @@ We'll try to cover:
 
 And the main goal of the show is to demonstrate how akka is cool and powerful and, together with Scala, make distributed computing a breeze.
 
+The slides can be found [here](slides/20150624_scala_romandie_meetup_akka.pdf)
+
 ##How?
 
     ./activator run
